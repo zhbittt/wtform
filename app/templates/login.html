@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+
+    <script src="/static/js/jquery-3.1.1.js"></script>
+    <link rel="stylesheet" href="/static/css/login.css">
+    <link rel="stylesheet" href="/static/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    {% if msg %}
+        <h1>{{ msg }}</h1>
+    {% endif %}
+    <div class="row">
+        <div class="col-md-5 col-md-offset-3">
+            <form method="post" novalidate>
+                {% for field in form %}
+                    <div class="form-group">
+                        <label >{{ field.label }}</label>
+                        {{ field }}
+                        <span class="error">{{ field.errors[0] }}</span>
+                      </div>
+                {% endfor %}
+                <input type="submit" value="登录" class="btn btn-primary" id="subBtn">
+                </form>
+        </div>
+    </div>
+</div>
+
+
+
+{#<script>#}
+{##}
+{#   $("#subBtn").click(function () {#}
+{##}
+{#       $.ajax({#}
+{#           url:"/login/",#}
+{#           type:"POST",#}
+{#           data:{#}
+{#               "username":$("#username").val(),#}
+{#               "password":$("#password").val(),#}
+{#               "validCode":$("#validCode").val(),#}
+{#               "csrfmiddlewaretoken":$("[name='csrfmiddlewaretoken']").val(),#}
+{#           },#}
+{#           success:function (data) {#}
+{#               console.log(data);#}
+{##}
+{#               var response=JSON.parse(data);#}
+{#               if (response["is_login"]){#}
+{#                   location.href="/index/"#}
+{#               }#}
+{#               else {#}
+{#                    $(".error").html(response["error_msg"]).css("color","red")#}
+{#               }#}
+{#           }#}
+{#       })#}
+{##}
+{##}
+{##}
+{#   })#}
+{##}
+{##}
+{#    // 验证码刷新#}
+{#    $(".validCode_img").click(function () {#}
+{#        $(this)[0].src+="?"#}
+{##}
+{#    })#}
+{#</script>#}
+
+
+
+</body>
+</html>
